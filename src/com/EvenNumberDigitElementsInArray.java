@@ -3,8 +3,10 @@ package com;
 public class EvenNumberDigitElementsInArray {
     public static void main(String[] args) {
         System.out.println("Hello Himanshu");
-        int[] arr = {10, 20, 100, 23, 54, 101, 1004, 103, 50, 999233,-1,0,-25};
+        int[] arr = {10, 20, 100, 23, 54, 101, 1004, 103, 50, 999233, -1, 0, 00, 01, -25};
+        System.out.println(findNumberOfElementsHavingEvenNumberOfDigits1(arr));
         System.out.println(findNumberOfElementsHavingEvenNumberOfDigits2(arr));
+        System.out.println(findNumberOfElementsHavingEvenNumberOfDigits3(arr));
     }
 
     static int findNumberOfElementsHavingEvenNumberOfDigits1(int[] arr) {
@@ -43,5 +45,20 @@ public class EvenNumberDigitElementsInArray {
         }
 
         return n;
+    }
+
+    static int findNumberOfElementsHavingEvenNumberOfDigits3(int[] arr) {
+        int digits;
+        int count = 0;
+        for (int num : arr) {
+            digits = 0;
+            if (num < 0) {
+                num = num * -1;
+            }
+            if (((int) Math.log10(num) + 1) % 2 == 0) {
+                count++;
+            }
+        }
+        return count;
     }
 }
