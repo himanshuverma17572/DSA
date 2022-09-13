@@ -1,4 +1,4 @@
-package com;
+package com.linearSearch;
 
 public class RichestCustomer {
     public static void main(String[] args) {
