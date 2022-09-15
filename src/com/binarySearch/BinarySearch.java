@@ -10,16 +10,22 @@ public class BinarySearch {
 //        int[] sortedArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
         int[] ascendingSortedArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16};
 
-//        for (int elementToSearch : Arrays.asList(-5, 0, 3, 10, 13, 19)) {
-//            int index = findIndexPositionUsingBinarySearch2(sortedArray, elementToSearch);
-//            System.out.println(-1 != index ? String.format("%s exists at index:%s", elementToSearch, index) : String.format("%s does not exists in the given array", elementToSearch));
-//        }
         for (int elementToSearch : Arrays.asList(-5, 0, 3, 10, 13, 19)) {
-//       Passing Ascending Sorted array
+            int index = findIndexPositionUsingBinarySearch(ascendingSortedArray, elementToSearch);
+            System.out.println(-1 != index ? String.format("%s exists at index:%s", elementToSearch, index) : String.format("%s does not exists in the given array", elementToSearch));
+        }
+        System.out.println("=================================================================================");
+        for (int elementToSearch : Arrays.asList(-5, 0, 3, 10, 13, 19)) {
+            int index = findIndexPositionUsingBinarySearch2(ascendingSortedArray, elementToSearch);
+            System.out.println(-1 != index ? String.format("%s exists at index:%s", elementToSearch, index) : String.format("%s does not exists in the given array", elementToSearch));
+        }
+        System.out.println("=================================================================================");
+        for (int elementToSearch : Arrays.asList(-5, 0, 3, 10, 13, 19)) {
+            // Passing Ascending Sorted array
             int index = orderAgnosticBinarySearch(ascendingSortedArray, elementToSearch);
             System.out.println(-1 != index ? String.format("%s exists at index:%s", elementToSearch, index) : String.format("%s does not exists in the given array", elementToSearch));
             int[] descendingSortedArray = {16, 15, 14, 13, 12, 11, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-//       Passing Descending Sorted array
+            // Passing Descending Sorted array
             index = orderAgnosticBinarySearch(descendingSortedArray, elementToSearch);
             System.out.println(-1 != index ? String.format("%s exists at index:%s", elementToSearch, index) : String.format("%s does not exists in the given array", elementToSearch));
         }
@@ -32,20 +38,16 @@ public class BinarySearch {
         int midElement;
         int indexPositionOfMidElement;
 
-        if (target >= sortedArray[indexPositionOfStartElement] && target <= sortedArray[indexPositionOfEndElement]) {
-            while (true) {
-                indexPositionOfMidElement = (indexPositionOfStartElement + indexPositionOfEndElement) / 2;
-                midElement = sortedArray[indexPositionOfMidElement];
-                if (indexPositionOfStartElement == indexPositionOfEndElement && target != midElement) {
-                    break;
-                } else if (target < midElement) {
-                    indexPositionOfEndElement = indexPositionOfMidElement - 1;
-                } else if (target == midElement) {
-                    indexPositionOfTargetElement = indexPositionOfMidElement;
-                    break;
-                } else if (target > midElement) {
-                    indexPositionOfStartElement = indexPositionOfMidElement + 1;
-                }
+        while (indexPositionOfStartElement <= indexPositionOfEndElement) {
+            indexPositionOfMidElement = (indexPositionOfStartElement + indexPositionOfEndElement) / 2;
+            midElement = sortedArray[indexPositionOfMidElement];
+            if (target < midElement) {
+                indexPositionOfEndElement = indexPositionOfMidElement - 1;
+            } else if (target == midElement) {
+                indexPositionOfTargetElement = indexPositionOfMidElement;
+                break;
+            } else if (target > midElement) {
+                indexPositionOfStartElement = indexPositionOfMidElement + 1;
             }
         }
 
