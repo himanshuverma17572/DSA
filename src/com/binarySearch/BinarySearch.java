@@ -9,7 +9,7 @@ public class BinarySearch {
         int[] sortedArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16};
 
         for (int elementToSearch : Arrays.asList(-5, 0, 3, 10, 13, 19)) {
-            int index = findIndexPositionUsingBinarySearch(sortedArray, elementToSearch);
+            int index = findIndexPositionUsingBinarySearch2(sortedArray, elementToSearch);
             System.out.println(-1 != index ? String.format("%s exists at index:%s", elementToSearch, index) : String.format("%s does not exists in the given array", elementToSearch));
         }
     }
@@ -40,4 +40,22 @@ public class BinarySearch {
 
         return indexPositionOfTargetElement;
     }
+
+    static int findIndexPositionUsingBinarySearch2(int[] arr, int target) {
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (target < arr[mid]) {
+                end = mid - 1;
+            } else if (target > arr[mid]) {
+                start = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+
 }
