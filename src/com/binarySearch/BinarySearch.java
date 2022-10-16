@@ -14,6 +14,8 @@ public class BinarySearch {
             int index = findIndexPositionUsingBinarySearch(ascendingSortedArray, elementToSearch);
             System.out.println(-1 != index ? String.format("%s exists at index:%s", elementToSearch, index) : String.format("%s does not exists in the given array", elementToSearch));
         }
+        
+        
         System.out.println("=================================================================================");
         for (int elementToSearch : Arrays.asList(-5, 0, 3, 10, 13, 19)) {
             int index = findIndexPositionUsingBinarySearch2(ascendingSortedArray, elementToSearch);
