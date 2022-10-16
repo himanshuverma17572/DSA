@@ -8,25 +8,25 @@ public class ProblemsOnBinarySearch {
         int[] ascendingSortedIntArray = {-3, -2, -1, 0, 1, 3, 5, 6, 7, 11, 12, 14, 16};
         // Finding ceiling of a number
         for (int target : Arrays.asList(-4, -5, -1, 0, 3, 9, 10, 19)) {
-            int indexOfCeilingOfNumber = ceilingOfNumber(ascendingSortedIntArray, target, true);
+            int indexOfCeilingOfNumber = ceilingOrFloorOfNumber(ascendingSortedIntArray, target, true);
             System.out.println(String.format("Ceiling of %s in Array:%s = %s", target, Arrays.toString(ascendingSortedIntArray), indexOfCeilingOfNumber != -1 ? ascendingSortedIntArray[indexOfCeilingOfNumber] : "Does not exists"));
         }
         System.out.println("=================================================================================");
         // Finding floor of a number
         for (int target : Arrays.asList(-4, -5, -1, 0, 3, 9, 10, 19)) {
-            int indexOfCeilingOfNumber = ceilingOfNumber(ascendingSortedIntArray, target, false);
+            int indexOfCeilingOfNumber = ceilingOrFloorOfNumber(ascendingSortedIntArray, target, false);
             System.out.println(String.format("Floor of %s in Array:%s = %s", target, Arrays.toString(ascendingSortedIntArray), indexOfCeilingOfNumber != -1 ? ascendingSortedIntArray[indexOfCeilingOfNumber] : "Does not exists"));
         }
         System.out.println("=================================================================================");
         // Finding ceiling of a char
         char[] ascendingSortedCharArray = {'H', 'c', 'f', 'g', 'k'};
         for (char target : Arrays.asList('a', 'c', 'm', 'A')) {
-            int indexOfCeilingOfCharacter = ceilingOfCharacter(ascendingSortedCharArray, target, true);
+            int indexOfCeilingOfCharacter = ceilingOrFloorfCharacter(ascendingSortedCharArray, target, true);
             System.out.println(String.format("Ceiling of %s in Array:%s = %s", target, Arrays.toString(ascendingSortedCharArray), indexOfCeilingOfCharacter != -1 ? ascendingSortedCharArray[indexOfCeilingOfCharacter] : "Does not exists"));
         }
     }
 
-    static int ceilingOfNumber(int[] arr, int target, boolean findCeiling) {
+    static int ceilingOrFloorOfNumber(int[] arr, int target, boolean findCeiling) {
         int indexOfStartElement = 0;
         int indexOfEndElement = arr.length - 1;
         int indexOfMidElement;
@@ -58,7 +58,7 @@ public class ProblemsOnBinarySearch {
         return findCeiling ? indexOfStartElement : indexOfEndElement;
     }
 
-    static int ceilingOfCharacter(char[] arr, char target, boolean findCeiling) {
+    static int ceilingOrFloorfCharacter(char[] arr, char target, boolean findCeiling) {
         int indexOfStartElement = 0;
         int indexOfEndElement = arr.length - 1;
         int indexOfMidElement;
@@ -89,5 +89,4 @@ public class ProblemsOnBinarySearch {
         }
         return findCeiling ? indexOfStartElement : indexOfEndElement;
     }
-
 }
